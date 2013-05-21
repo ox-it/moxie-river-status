@@ -9,7 +9,8 @@ class RiverStatusRepresentation(Representation):
         self.river_status = river_status
 
     def as_dict(self):
-        return {self.river_status.name: self.river_status.status}
+        return {'name': self.river_status.name,
+                'status': self.river_status.status}
 
     def as_json(self):
         return jsonify(self.as_dict())
@@ -24,7 +25,7 @@ class RiversStatusRepresentation(Representation):
     def as_dict(self):
         rivers = {'rivers': [RiverStatusRepresentation(river).as_dict()
             for river in self.rivers]}
-        rivers['last_updated'] = self.last_updated
+        rivers['_last_updated'] = self.last_updated
         return rivers
 
     def as_json(self):
