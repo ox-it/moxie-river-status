@@ -1,29 +1,47 @@
+========
 HTTP API
 ========
 
 GET /
------
+=====
 
 .. code-block:: json
 
     {
-      "_last_updated": "2013-09-18 11:31:22.709266",
+      "_last_updated": "2013-09-18 14:20:18.257317",
+      "_links": {
+        "self": {
+          "href": "/rivers/"
+        }
+      },
       "rivers": [
         {
           "name": "Godstow",
-          "status": "green"
+          "status": "green",
+          "status_description": "No restrictions"
         },
         {
           "name": "Isis",
-          "status": "green"
+          "status": "green",
+          "status_description": "No restrictions"
         }
-    ]
+      ]
     }
 
-The ``status`` value is one of:
+Status values
+-------------
 
- * ``green``: Green: No restrictions
- * ``blue``: Blue: No novice coxes
- * ``yellow``: Yellow: Senior crews only
- * ``red``: Red: No crews allowed out
- * ``grey``: Grey: Flag not currently being maintained
+The property ``status`` and ``status_description`` can have the following values.
+
+================================    =======================================================================
+Status                              Description
+================================    =======================================================================
+green                               No restrictions
+blue                                No novice coxes
+yellow                              Senior crews only
+red                                 No crews allowed out
+grey                                Flag not currently being maintained
+black                               No rowing for any crews. Isis on Environment Agency flood watch.
+================================    =======================================================================
+
+Eventually, a different value for ``status`` might be displayed, the ``status_description`` will then be "Undefined".

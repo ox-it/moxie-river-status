@@ -2,6 +2,8 @@ from flask import url_for, jsonify
 
 from moxie.core.representations import Representation, HALRepresentation
 
+from .domain import STATUS_DESCRIPTIONS
+
 
 class RiverStatusRepresentation(Representation):
 
@@ -10,7 +12,8 @@ class RiverStatusRepresentation(Representation):
 
     def as_dict(self):
         return {'name': self.river_status.name,
-                'status': self.river_status.status}
+                'status': self.river_status.status,
+                'status_description': STATUS_DESCRIPTIONS.get(self.river_status.status, 'Undefined')}
 
     def as_json(self):
         return jsonify(self.as_dict())
