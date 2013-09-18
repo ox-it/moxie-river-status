@@ -1,4 +1,5 @@
 import logging
+from datetime import timedelta
 
 from flask import request
 
@@ -12,6 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 class Status(ServiceView):
+
+    expires = timedelta(minutes=10)
 
     def handle_request(self):
         service = RiverStatusService.from_context()
